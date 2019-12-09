@@ -68,7 +68,6 @@ Rcpp::List newmark_beta(
         relAcc.row(i) = acc.transpose();
         relVel.row(i) = vel.transpose();
         relDis.row(i) = dis.transpose();
-
     }
 
     Rcpp::List L = Rcpp::List::create(
@@ -79,7 +78,6 @@ Rcpp::List newmark_beta(
         Rcpp::Named("relAcc") = relAcc,
         Rcpp::Named("relVel") = relVel,
         Rcpp::Named("relDis") = relDis
-
     );
 
     return L;
