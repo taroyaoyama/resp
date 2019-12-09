@@ -6,9 +6,9 @@
 
 using namespace Rcpp;
 
-// NewmarkBeta
-Rcpp::List NewmarkBeta(Eigen::Map<Eigen::MatrixXd> dat, Eigen::Map<Eigen::MatrixXd> M, Eigen::Map<Eigen::MatrixXd> C, Eigen::Map<Eigen::MatrixXd> K, double dt, double beta, double gamma);
-RcppExport SEXP _resp_NewmarkBeta(SEXP datSEXP, SEXP MSEXP, SEXP CSEXP, SEXP KSEXP, SEXP dtSEXP, SEXP betaSEXP, SEXP gammaSEXP) {
+// newmark_beta
+Rcpp::List newmark_beta(Eigen::Map<Eigen::MatrixXd> dat, Eigen::Map<Eigen::MatrixXd> M, Eigen::Map<Eigen::MatrixXd> C, Eigen::Map<Eigen::MatrixXd> K, double dt, double beta, double gamma);
+RcppExport SEXP _resp_newmark_beta(SEXP datSEXP, SEXP MSEXP, SEXP CSEXP, SEXP KSEXP, SEXP dtSEXP, SEXP betaSEXP, SEXP gammaSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
@@ -19,33 +19,13 @@ BEGIN_RCPP
     Rcpp::traits::input_parameter< double >::type dt(dtSEXP);
     Rcpp::traits::input_parameter< double >::type beta(betaSEXP);
     Rcpp::traits::input_parameter< double >::type gamma(gammaSEXP);
-    rcpp_result_gen = Rcpp::wrap(NewmarkBeta(dat, M, C, K, dt, beta, gamma));
-    return rcpp_result_gen;
-END_RCPP
-}
-// NewmarkBeta_NL
-Rcpp::List NewmarkBeta_NL(Eigen::Map<Eigen::MatrixXd> dat, double w, double h, double dt, double alp, double dy_pls, double m, double beta, double gamma);
-RcppExport SEXP _resp_NewmarkBeta_NL(SEXP datSEXP, SEXP wSEXP, SEXP hSEXP, SEXP dtSEXP, SEXP alpSEXP, SEXP dy_plsSEXP, SEXP mSEXP, SEXP betaSEXP, SEXP gammaSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< Eigen::Map<Eigen::MatrixXd> >::type dat(datSEXP);
-    Rcpp::traits::input_parameter< double >::type w(wSEXP);
-    Rcpp::traits::input_parameter< double >::type h(hSEXP);
-    Rcpp::traits::input_parameter< double >::type dt(dtSEXP);
-    Rcpp::traits::input_parameter< double >::type alp(alpSEXP);
-    Rcpp::traits::input_parameter< double >::type dy_pls(dy_plsSEXP);
-    Rcpp::traits::input_parameter< double >::type m(mSEXP);
-    Rcpp::traits::input_parameter< double >::type beta(betaSEXP);
-    Rcpp::traits::input_parameter< double >::type gamma(gammaSEXP);
-    rcpp_result_gen = Rcpp::wrap(NewmarkBeta_NL(dat, w, h, dt, alp, dy_pls, m, beta, gamma));
+    rcpp_result_gen = Rcpp::wrap(newmark_beta(dat, M, C, K, dt, beta, gamma));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_resp_NewmarkBeta", (DL_FUNC) &_resp_NewmarkBeta, 7},
-    {"_resp_NewmarkBeta_NL", (DL_FUNC) &_resp_NewmarkBeta_NL, 9},
+    {"_resp_newmark_beta", (DL_FUNC) &_resp_newmark_beta, 7},
     {NULL, NULL, 0}
 };
 

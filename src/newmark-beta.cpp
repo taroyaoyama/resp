@@ -1,12 +1,16 @@
 #include <Rcpp.h>
 #include <RcppEigen.h>
 
+//' Response calculation of S/M-DOF systems using Newmark-beta method
 //'
-//'
-//'@export
+//' @param dat absolute acc. of ground motion
+//' @param M,C,K mass/damping/stiff. matrix
+//' @param dt time interal (inverse of sampling freq.)
+//' @param beta,gamma params of Newmark-beta method.
+//' @export
 
 //[[Rcpp::export]]
-Rcpp::List NewmarkBeta(
+Rcpp::List newmark_beta(
     Eigen::Map<Eigen::MatrixXd> dat, Eigen::Map<Eigen::MatrixXd> M,
     Eigen::Map<Eigen::MatrixXd> C, Eigen::Map<Eigen::MatrixXd> K,
     double dt, double beta = 1/4, double gamma = 1/2) {

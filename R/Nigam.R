@@ -1,5 +1,14 @@
 
-Nigam <- function(y, h, w, dt) {
+#' Response calculation of SDOF using Nigam & Jennings algorithm
+#'
+#' @param y absolute acc. of input ground motion
+#' @param h damping ratio
+#' @param w natural circular frequency (rad)
+#' @param dt time interval (of inverse of sampling freq.)
+#'
+#' @export
+
+nigam <- function(y, h, w, dt) {
 
     wd  <-  w * sqrt(1 - h^2)
     E   <-  exp(-h * w * dt)
@@ -31,6 +40,7 @@ Nigam <- function(y, h, w, dt) {
     acc[1] <- 2.0 * h * w * y[1] * dt
 
     for (i in 1:(len-1)) {
+
         dis[i+1] <- A11 * dis[i] + A12 * vel[i] + B11 * y[i] + B12 * y[i]
         vel[i+1] <- A21 * dis[i] + A22 * vel[i] + B21 * y[i] + B22 * y[i]
         acc[i+1] <- -2.0 * h * w * vel[i+1] - w^2 * dis[i+1]
