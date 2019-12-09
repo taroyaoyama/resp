@@ -6,6 +6,10 @@ file.copy(
     paste0(oldws,c('NewmarkBeta.cpp', 'NewmarkBeta_NL.cpp')),
     to = 'src/')
 
+file.copy(
+    paste0(oldws,c('Nigam.R', 'Parzen.R', 'buildK.R')),
+    to = 'R/')
+
 devtools::document()
 devtools::load_all()
 
